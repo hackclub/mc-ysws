@@ -1,0 +1,16 @@
+.git
+.gitignore
+.next
+.next-profiles
+node_modules
+.env*
+*.md
+.vscode
+.idea
+.DS_Store
+coverage
+.vercel
+*.tsbuildinfo
+Dockerfile*
+.dockerignore
+biome.json
