@@ -9,7 +9,6 @@
     "check": "biome check --write ."
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1",
     "airtable": "^0.12.2",
     "jszip": "^3.10.1",
     "next": "^16.3.3",

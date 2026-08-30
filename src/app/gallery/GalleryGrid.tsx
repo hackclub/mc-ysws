@@ -117,7 +117,7 @@ export default function GalleryGrid({
                 projectUrl: project.playable_url,
                 codeUrl: project.code_url,
               });
-              fetch(`https://cachet.dunkirk.sh/users/${project.slack_id}`)
+              fetch(`https://cachet.hackclub.com/users/${project.slack_id}`)
                 .then(res => res.json())
                 .then(setCreator);
             }}

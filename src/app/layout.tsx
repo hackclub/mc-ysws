@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import "~/styles/base.css";
 import "~/styles/buttons.css";
@@ -96,7 +95,6 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

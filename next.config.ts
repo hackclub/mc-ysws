@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
               "img-src 'self' https: data:",
               "media-src 'self' https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://cachet.dunkirk.sh https://vitals.vercel-insights.com",
+              "connect-src 'self' https://cachet.hackclub.com",
               "frame-src https://www.youtube.com",
               "object-src 'none'",
               "base-uri 'self'",
