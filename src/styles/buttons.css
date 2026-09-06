@@ -1,9 +1,11 @@
 .btn {
+  display: inline-block;
   font-family: Minecraftia, sans-serif;
   text-shadow: 0 2px #0000004d;
-  padding: 1em;
+  padding: 1.2em 1em 1em;
   color: white;
   font-size: 20px;
+  line-height: 1.2;
   background: #31ae1f;
   border: 0;
   font-weight: bold;

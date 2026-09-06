@@ -1,35 +1,92 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import Page from "~/components/Page";
 import TiledDiv from "~/components/TiledDiv";
 
 const faq = [
   {
     question: "How much time do I need to spend on my mod?",
-    answer: "Doesn't matter as long as you commit regularly! You still need Hackatime tho!",
+    text: "Doesn't matter as long as you commit regularly! You still need Hackatime tho!",
+    node: (
+      <>
+        Doesn't matter as long as you commit regularly!
+        <br />
+        <b>You still need Hackatime tho!</b>
+      </>
+    ),
   },
   {
     question: "Do I need Minecraft for this YSWS?",
-    answer: "No, you don't need an account to create a mod and you can get one after!",
+    text: "No, you don't need an account to create a mod and you can get one after!",
+  },
+  {
+    question: "What do I need to know before I start?",
+    text: "Just basic Java! If you're new, our guide links some beginner friendly resources and walks you through setting everything up.",
+    node: (
+      <>
+        Just basic Java! If you're new, our <Link href="/guide">guide</Link> links some beginner friendly
+        resources and walks you through setting everything up.
+      </>
+    ),
   },
   {
     question: "Is this legit?",
-    answer: "Yep! This program is ran by Hack Club, an awesome nonprofit powered by donations.",
+    text: "Yep! This program is ran by Hack Club, an awesome nonprofit powered by donations. You can view our finances here.",
+    node: (
+      <>
+        Yep! This program is ran by <a href="https://hackclub.com/philosophy">Hack Club</a>, an
+        awesome nonprofit powered by donations, you can view our{" "}
+        <a href="https://hcb.hackclub.com/minecraft-modding-ysws">finances here</a>.
+      </>
+    ),
   },
   {
     question: "Can I submit an old mod?",
-    answer: "Sorry! But it needs to be new.",
+    text: "Sorry! But it needs to be new.",
   },
   {
     question: "Can I use MCreator/AI?",
-    answer: "No. You must code the mod yourself.",
+    text: "No. You must code the mod yourself.",
   },
   {
     question: "Can I use libraries? Can I use Kotlin?",
-    answer: "Yup!",
+    text: "Yup!",
+  },
+  {
+    question: "Do I have to use Fabric?",
+    text: "We use Fabric in our guide since it's the most beginner friendly, but other loaders like neoforge should work too.",
+    node: (
+      <>
+        We use <a href="https://fabricmc.net/">Fabric</a> in our guide since its the simplest but other loaders like <a href="https://neoforge.dev/">neoforge</a> work too.
+      </>
+    ),
   },
   {
     question: "Can I make a shader instead?",
-    answer: "Of course! Shaders are awesome!",
+    text: "Of course! Shaders are awesome!",
+  },
+  {
+    question: "What prizes can I win?",
+    text: "Stickers, plus a game like Minecraft or Hytale, or a server. Get 300 downloads in your mod's first month and you'll also get Terraria for free!",
+  },
+  {
+    question: "Other questions?",
+    text: "Join our Slack channel (#mc-modding) on Hack Club's Slack and follow the instructions there to join.",
+    node: (
+      <>
+        Join{" "}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://app.slack.com/client/T0266FRGM/C07NQ5QAYNQ">
+          our slack channel
+        </a>{" "}
+        (#mc-modding) on{" "}
+        <a target="_blank" rel="noopener noreferrer" href="https://slack.hackclub.com">
+          Hack Club's Slack
+        </a>.
+      </>
+    ),
   },
 ];
 
@@ -50,10 +107,10 @@ export default function HomePage() {
               },
               {
                 "@type": "FAQPage",
-                mainEntity: faq.map(({ question, answer }) => ({
+                mainEntity: faq.map(({ question, text }) => ({
                   "@type": "Question",
                   name: question,
-                  acceptedAnswer: { "@type": "Answer", text: answer },
+                  acceptedAnswer: { "@type": "Answer", text },
                 })),
               },
             ],
@@ -195,43 +252,12 @@ export default function HomePage() {
             <a href="https://www.terraria.org/">Terraria</a> for free!
           </p>
           <h2>FAQ</h2>
-          <h3>- How much time do I need to spend on my mod?</h3>
-          <p>
-            Doesn't matter as long as you commit regularly!
-            <br />
-            <b>You still need Hackatime tho!</b>
-          </p>
-          <h3>- Do I need Minecraft for this YSWS?</h3>
-          <p>No, you don't need an account to create a mod and you can get one after!</p>
-          <h3>- Is this legit?</h3>
-          <p>
-            Yep! This program is ran by <a href="https://hackclub.com/philosophy">Hack Club</a>, an
-            awesome nonprofit powered by donations, you can view our{" "}
-            <a href="https://hcb.hackclub.com/minecraft-modding-ysws">finances here</a>.
-          </p>
-          <h3>- Can I submit an old mod?</h3>
-          <p>Sorry! But it needs to be new.</p>
-          <h3>- Can I use MCreator/AI?</h3>
-          <p>No. You must code the mod yourself.</p>
-          <h3>- Can I use libraries? Can I use Kotlin?</h3>
-          <p>Yup!</p>
-          <h3>- Can I make a shader instead?</h3>
-          <p>Of course! Shaders are awesome!</p>
-          <h3>- Other questions?</h3>
-          <p>
-            Join{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://app.slack.com/client/T0266FRGM/C07NQ5QAYNQ">
-              our slack channel
-            </a>{" "}
-            (#mc-modding) on{" "}
-            <a target="_blank" rel="noopener noreferrer" href="https://slack.hackclub.com">
-              Hack Club's Slack
-            </a>
-            , follow the instructions on the slack to join.
-          </p>
+          {faq.map(({ question, text, node }) => (
+            <Fragment key={question}>
+              <h3>- {question}</h3>
+              <p>{node ?? text}</p>
+            </Fragment>
+          ))}
         </div>
       </TiledDiv>
     </Page>
